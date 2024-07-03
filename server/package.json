@@ -1,15 +1,17 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon server.js",
     "test": "NODE_ENV=test jest --verbose"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@kubernetes/client-node": "^0.21.0",
+    "cors": "^2.8.5",
     "express": "^4.19.2"
   },
   "devDependencies": {

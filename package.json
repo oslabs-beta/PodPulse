@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "axios": "^1.7.2",
+    "pretty-print-json": "^3.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^6.24.0",

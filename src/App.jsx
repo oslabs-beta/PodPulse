@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'normalize.css';
+import './App.scss';
 import Layout from './Components/Layout/Layout';
 import PodsDashboard from './Components/PodsDashboard/PodsDashboard';
 import ContainersDashboard from './Components/ContainersDashboard/ContainersDashboard';
 // import { useEffect } from 'react';
 // import { prettyPrintJson } from 'pretty-print-json';
 
-const App = () => {
+export default function App() {
+  return (
+    <div className='app'>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<PodsDashboard />} />
+            <Route path='containers' element={<ContainersDashboard />} />
+          </Route>
+        </Routes>
+      </Router>
+    </div>
+  );
+};
+
+
+// const App = () => {
   // const [info, setInfo] = useState('');
 
   // useEffect(() => {
@@ -23,16 +41,3 @@ const App = () => {
   //       console.log(err);
   //     });
   // }, [info]);
-
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />} />
-          <Route index element={<PodsDashboard />} />
-          <Route path='containers' element={<ContainersDashboard />} />
-      </Routes>
-    </Router>
-  );
-};
-
-export default App;

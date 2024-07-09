@@ -1,34 +1,16 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import * as styles from './Layout.module.scss';
+import Header from '../Header/Header.jsx';
 
-const Layout = () => {
+export default function Layout() {
   return (
-    <div>
-      <header>
-        <div>
-          Logo
-        </div>
-        <div>
-          <nav>
-            <ul>
-              <li>
-              <Link>Menu Item 1</Link>
-              </li>
-              <li>
-              <Link>Menu Item 2</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <main>
-        <Outlet />
-      </main>
-      <footer>
-        <p>My App Footer</p>
+    <div className={styles.mainContainer}>
+      <Header />
+      <Outlet />
+      <footer className={`${styles.footer} barlow sm regular` }>
+        <p>© 2024 PodPulse </p>
       </footer>
     </div>
-  )
-}
-
-export default Layout;
+  );
+};

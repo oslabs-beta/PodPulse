@@ -10,12 +10,10 @@ export default function PodDashboard() {
   useEffect(() => {
     fetch('/test-data')
       .then(response => {
-        console.log(response);
         return response.json();
       })
       .then(data => {
-        console.log(data.containers);
-        setPodDashboardData(data.containers);
+        setPodDashboardData(data.pods[0].containers);
       })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
@@ -31,7 +29,7 @@ export default function PodDashboard() {
     return (
       <div className={styles.gridRow} key={container.container_db_id}>
         <div>{container.container_name}</div>
-        <div>{restartRate}</div>
+        <div>50</div>
         <div><RestartTimes restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div>
         <div><RestartedBy restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div>
         <div><button onClick={() => handleClearLogs(container.container_db_id)}>Clear Logs</button></div>
@@ -53,7 +51,43 @@ export default function PodDashboard() {
           <div>Last Restarted By</div>
           <div>Clear Logs</div>
         </div>
-        {/* {rows} */}
+        {rows}
+        
+        {/* <div className={styles.gridRow}>
+        <div>react-app</div>
+        <div>12</div>
+        <div>
+          Monday, Jan 08 2023 @ 11:32:20pm
+        </div>
+        <div>Pablo Rosillo</div>
+        <div>
+          <button>Clear Logs</button>
+        </div>
+        </div>
+        <div className={styles.gridRow}>
+        <div>redux store</div>
+        <div>08</div>
+        <div>
+          Monday, Jan 08 2023 @ 01:02:47am
+        </div>
+        <div>--</div>
+        <div>
+          <button>Clear Logs</button>
+        </div>
+        </div>
+        <div className={styles.gridRow}>
+        <div>nginx-proxy</div>
+        <div>50</div>
+        <div>
+          Sunday, Jan 07 2023 @ 11:18:01pm
+        </div>
+        <div>--</div>
+        <div>
+          <button>Clear Logs</button>
+        </div>
+        </div> */}
+
+
       </div>
 
       <div className={styles.addContainer}>
@@ -65,36 +99,3 @@ export default function PodDashboard() {
 }
 
 
-{/* <div className={styles.gridRow}>
-<div>react-app</div>
-<div>12</div>
-<div>
-  Monday, Jan 08 2023 @ 11:32:20pm
-</div>
-<div>Pablo Rosillo</div>
-<div>
-  <button>Clear Logs</button>
-</div>
-</div>
-<div className={styles.gridRow}>
-<div>redux store</div>
-<div>08</div>
-<div>
-  Monday, Jan 08 2023 @ 01:02:47am
-</div>
-<div>--</div>
-<div>
-  <button>Clear Logs</button>
-</div>
-</div>
-<div className={styles.gridRow}>
-<div>nginx-proxy</div>
-<div>50</div>
-<div>
-  Sunday, Jan 07 2023 @ 11:18:01pm
-</div>
-<div>--</div>
-<div>
-  <button>Clear Logs</button>
-</div>
-</div> */}

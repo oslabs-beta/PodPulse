@@ -1,48 +1,43 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { prettyPrintJson } from 'pretty-print-json';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'normalize.css';
+import './App.scss';
+import Layout from './Components/Layout/Layout';
+import NodesDashboard from './Components/NodesDashboard/NodesDashboard';
+import PodDashboard from './Components/PodDashboard/PodDashboard';
+// import { useEffect } from 'react';
+// import { prettyPrintJson } from 'pretty-print-json';
 
-const App = () => {
-  const [info, setInfo] = useState('');
-
-  useEffect(() => {
-    fetch('http://localhost:3000/getPodInfo', { method: 'GET' })
-      .then((res) => {
-        //console.log(res);
-        res.json().then((json) => {
-          console.log(json);
-          // setInfo(prettyPrintJson.toHtml(json, { indent: 2 }));
-          setInfo(JSON.stringify(json, null, 2));
-          console.log(json['ecs-test']);
-          console.log(
-            JSON.stringify({
-              name: json['ecs-test'].name,
-              resourceVersion: json['ecs-test'].resourceVersion,
-            })
-          );
-          fetch('http://localhost:3000/setWatch', {
-            method: 'POST',
-            body: JSON.stringify({
-              name: json['ecs-test'].name,
-              resourceVersion: json['ecs-test'].resourceVersion,
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            //   'Access-Control-Allow-Methods': '*',
-            // },
-          }).then((res) => {});
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [info]);
+export default function App() {
   return (
-    <div>
-      <p>{info}</p>
+    <div className='app'>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<NodesDashboard />} />
+            <Route path='/pod-dashboard' element={<PodDashboard />} />
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 };
 
-export default App;
+
+// const App = () => {
+  // const [info, setInfo] = useState('');
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/getPods', { method: 'GET' })
+  //     .then((res) => {
+  //       // console.log(res);
+  //       res.json().then((json) => {
+  //         console.log(json);
+  //         // setInfo(prettyPrintJson.toHtml(json, { indent: 2 }));
+  //         setInfo(JSON.stringify(json, null, 2));
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [info]);

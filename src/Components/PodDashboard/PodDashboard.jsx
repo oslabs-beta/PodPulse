@@ -10,7 +10,6 @@ export default function PodDashboard() {
   useEffect(() => {
     fetch('/getPods')
       .then(response => {
-        console.log(response);
         return response.json();
       })
       .then(data => {

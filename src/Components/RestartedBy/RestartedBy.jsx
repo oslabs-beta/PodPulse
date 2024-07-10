@@ -34,9 +34,9 @@ export default function RestartedBy(props) {
     }
   });
 
-  return (
-    <ul>
-      {names}
-    </ul>
-  );
+  // return (
+  //   <ul>
+  //     {names}
+  //   </ul>
+  // );
 }

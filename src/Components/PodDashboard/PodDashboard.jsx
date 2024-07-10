@@ -8,14 +8,15 @@ export default function PodDashboard() {
   const [podDashboardData, setPodDashboardData] = useState([]);
 
   useEffect(() => {
-    fetch('/test-data')
+    fetch('/getPods')
       .then(response => {
         console.log(response);
         return response.json();
       })
       .then(data => {
-        console.log(data.containers);
-        setPodDashboardData(data.containers);
+  
+        console.log("data.container is,", data);
+        setPodDashboardData(data);
       })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
@@ -31,9 +32,9 @@ export default function PodDashboard() {
     return (
       <div className={styles.gridRow} key={container.container_db_id}>
         <div>{container.container_name}</div>
-        <div>{restartRate}</div>
-        <div><RestartTimes restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div>
-        <div><RestartedBy restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div>
+        <div>Restart Rate!</div>
+        <div><RestartTimes log_time={container.restart_logs.log_time} restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div>
+        <div>RestartedBy</div>{/* <div><RestartedBy restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div> */}
         <div><button onClick={() => handleClearLogs(container.container_db_id)}>Clear Logs</button></div>
       </div>
     );
@@ -53,7 +54,7 @@ export default function PodDashboard() {
           <div>Last Restarted By</div>
           <div>Clear Logs</div>
         </div>
-        {/* {rows} */}
+        {rows}
       </div>
 
       <div className={styles.addContainer}>

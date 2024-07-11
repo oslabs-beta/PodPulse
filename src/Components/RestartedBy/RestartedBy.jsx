@@ -6,29 +6,34 @@ export default function RestartedBy(props) {
   let logId;
 
   function handleChange(e) {
-   e.preventDefault();
-   name = e.target.value;
-   logId = e.target.key;
+    e.preventDefault();
+    name = e.target.value;
+    logId = e.target.key;
   }
 
-  useEffect( () => {
+  useEffect(() => {
     fetch('/pods/restarted_by', {
-      method: 'POST', 
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         restart_log_db_id: logId,
-      })
+      }),
     });
-  }
-  , []);
+  }, []);
 
-  const names = props.restartLogs.map(log => {
-    if(log.restart_person) {
-      return <li key={props.key}>{log.restart_person}</li>
+  const names = props.restartLogs.map((log) => {
+    if (log.restart_person) {
+      return <li key={props.key}>{log.restart_person}</li>;
     } else {
       return (
         <form>
-          <input type='text' placeholder='Name' value='' onChange={handleChange} key={log.restart_log_db_id}></input>
+          <input
+            type='text'
+            placeholder='Name'
+            value=''
+            onChange={handleChange}
+            key={log.restart_log_db_id}
+          ></input>
         </form>
       );
     }

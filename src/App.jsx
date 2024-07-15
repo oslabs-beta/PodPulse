@@ -7,7 +7,6 @@ import NodesDashboard from './Components/NodesDashboard/NodesDashboard';
 import PodDashboard from './Components/PodDashboard/PodDashboard';
 // import { useEffect } from 'react';
 // import { prettyPrintJson } from 'pretty-print-json';
-
 export default function App() {
   return (
     <div className='app'>
@@ -42,3 +41,4 @@ export default function App() {
 //       console.log(err);
 //     });
 // }, [info]);
+//};

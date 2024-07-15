@@ -1,21 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as styles from './NodesDashboard.module.scss';
-
 export default function NodesDashboard() {
   const navigate = useNavigate();
-
   const goToPod = () => {
     navigate('/pod-dashboard')
   }
-
   return (
     <main className={styles.main}>
-      
       <div className={styles.nodeContainer}>
         <h1 className={`${styles.h1} poppins lg regular`}><span className={styles.listItem}>Node Name:</span>node-1</h1>
         <div className={`${styles.podCardsContainer} barlow m regular`}>
-
           <div className={styles.podCard} onClick={goToPod}>
             <h2 className='barlow ml medium'><span className={styles.listItem}>Pod:</span>react-front-end</h2>
             <ul className='barlow xs regular'>
@@ -24,7 +19,6 @@ export default function NodesDashboard() {
               <li><span className={styles.listItem}>Last Restarted by:</span>Pablo Rosillo</li>
             </ul>
           </div>
-
           <div className={styles.podCard}>
             <h2 className='barlow ml medium'><span className={styles.listItem}>Pod:</span>express-server</h2>
             <ul className='barlow xs regular'>
@@ -33,7 +27,6 @@ export default function NodesDashboard() {
               <li><span className={styles.listItem}>Last Restarted by:</span>--</li>
             </ul>
           </div>
-
           <div className={styles.podCard}>
           <h2 className='barlow ml medium'><span className={styles.listItem}>Pod:</span>mongodb-database</h2>
             <ul className='barlow xs regular'>
@@ -52,7 +45,6 @@ export default function NodesDashboard() {
           </div>
         </div>
       </div>
-
       <div className={styles.nodeContainer}>
         <h1 className={`${styles.h1} poppins lg regular`}><span className={styles.listItem}>Node Name:</span>node-2</h1>
         <div className={`${styles.podCardsContainer} barlow m regular`}>
@@ -82,11 +74,9 @@ export default function NodesDashboard() {
           </div>
         </div>
       </div>
-
       <div className={styles.addNode}>
         <button className='btn-1'>+ Add Node</button>
       </div>
-
     </main>
   );
 };

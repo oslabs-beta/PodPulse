@@ -33,13 +33,17 @@ export default function PodDashboard() {
         <div>Restart Rate!</div>
         <div>
           <RestartTimes
-            log_time={container.restart_logs.log_time}
+            log_time={container.restart_logs[0].log_time}
             restartLogs={container.restart_logs}
             key={container.restart_logs.restart_log_db_id}
           />
         </div>
-        <div>RestartedBy</div>
-        {/* <div><RestartedBy restartLogs={container.restart_logs} key={container.restart_logs.restart_log_db_id}/></div> */}
+        <div>
+          <RestartedBy
+            restartLogs={container.restart_logs}
+            key={container.restart_logs.restart_log_db_id}
+          />
+        </div>
         <div>
           <button onClick={() => handleClearLogs(container.container_db_id)}>
             Clear Logs

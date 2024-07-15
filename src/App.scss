@@ -1,19 +1,16 @@
-/*GLOBAL APP STYLES ONLY*/
-
 :root {
-  --primary: #326ce5;
-  --secondary: #3c7dff;
+  --primary: #326CE5;
+  --secondary: #3C7DFF;
   --black: #030303;
-  --gray: #c8d1de;
+  --gray: #C8D1DE;
   --white: #F9F9F9;
-  --primary-bg: #f8f8f9;
-  --secondary-bg: #f2f4f8;
-  --tertiary-bg: #e6ebf2;
+  --primary-bg: #F8F8F9;
+  --secondary-bg: #F2F4F8;
+  --tertiary-bg: #E6EBF2;
   --card-border: rgb(211, 211, 211);
   --card-box-shadow: 0px 3px 20px -20px rgba(0,0,0,0.75);
   --card-hover-box-shadow: 0px 3px 20px -13px rgba(50,108,229,1);
 }
-
 /*FONT SIZES*/
 .xxs {
   font-size: 12px;
@@ -39,104 +36,81 @@
 .xxl {
   font-size: 40px
 }
-
 /*FONT WEIGHTS*/
 .thin {
   font-weight: 100;
 }
-
 .extra-light {
   font-weight: 200;
 }
-
 .light {
   font-weight: 300;
 }
-
 .regular {
   font-weight: 400;
 }
-
 .medium {
   font-weight: 500;
 }
-
 .semi-bold {
   font-weight: 600;
 }
-
 .bold {
   font-weight: 700;
 }
-
 .extra-bold {
   font-weight: 800;
 }
-
 .black {
   font-weight: 900;
 }
-
 /*FONTS*/
-
 .oswald {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
-
 .barlow {
   font-family: "Barlow", sans-serif;
   font-style: normal;
 }
-
 .poppins {
   font-family: "Poppins", sans-serif;
   font-style: normal;
 }
-
 .exo {
   font-family: "Exo 2", sans-serif;
   font-style: normal;
 }
-
 /*HTML ELEMENTS*/
-
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: var(--secondary-bg);
   margin: 0;
 }
-
 h1, h2, h3, h4, h5, h6{
   margin: 0;
   overflow-wrap: break-word;
 }
-
 p {
   font-size: 16px;
   font-weight: 400;
   margin: -5px 0;
 }
-
 ul {
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
 }
-
 a {
   color: var(--black);
   text-decoration: none;
-
   &:hover {
     text-decoration: underline;
   }
 }
-
 .btn-1 {
   background-color: var(--primary);
   border: none;
@@ -145,12 +119,10 @@ a {
   font-family: "Barlow", sans-serif;
   font-weight: 400;
   padding: 4px 20px 7px;
-
   &:hover {
     background-color: var(--secondary);
   }
 }
-
 .app{
   display: flex;
   flex-direction: column;
@@ -158,4 +130,3 @@ a {
   margin: 0 auto;
   height: 100vh;
 }
-

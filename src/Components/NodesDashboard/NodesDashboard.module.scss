@@ -6,15 +6,12 @@
   text-align: center;
   padding: 30px 5%;
 }
-
 .nodeContainer {
   margin-bottom: 50px;
 }
-
 .h1 {
   margin-bottom: 10px;
 }
-
 .podCardsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -23,9 +20,7 @@
   border-radius: 13px;
   margin: 10px auto 0;
   padding: 10px;
-  
 }
-
 .podCard {
   background-color: var(--primary-bg);
   text-align: start;
@@ -35,7 +30,6 @@
   -moz-box-shadow: var(--card-box-shadow);
   box-shadow: var(--card-box-shadow);
   padding: 15px;
-
   &:hover {
     border-color: var(--primary);
     -webkit-box-shadow: var(--card-hover-box-shadow);
@@ -43,12 +37,10 @@
     box-shadow: var(--card-hover-box-shadow);
   }
 }
-
 .listItem {
   font-weight: 500;
   margin-right: 10px;
 }
-
 .addNode{
   display: flex;
   justify-content: center;

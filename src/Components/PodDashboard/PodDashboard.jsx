@@ -10,12 +10,10 @@ export default function PodDashboard() {
   useEffect(() => {
     fetch('/getPods')
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((data) => {
-        console.log('data is,', data);
-        setPodDashboardData(data);
+        setPodDashboardData(data.pods[0].containers);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -27,6 +25,7 @@ export default function PodDashboard() {
       .catch((error) => console.error('Error fetching data:', error));
   }
 
+  // Mapping through the fetched containers object to create table rows dynamically
   const rows = podDashboardData.map((container) => {
     return (
       <div className={styles.gridRow} key={container.container_db_id}>

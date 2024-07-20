@@ -1,0 +1,63 @@
+.mainlogin{
+    display: flex;
+    text-align: center;
+    padding: 120px 200px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.createBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 15px 5px;
+  background-color: rgb(206, 210, 211);
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  box-shadow: 5px 10px 5px rgb(112, 101, 101);
+  border-radius: 5px;
+}
+#Userinputs {
+  max-width: 220px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 10px;
+  border-color: black;
+
+}
+#PWinputs {
+    max-width: 220px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 10px;
+    border-color: black;
+  
+  }
+#buttons{
+    border-color: black;
+    margin-top: 5px ;
+    max-width: 80px;
+    border-radius: 3px black;
+}
+#buttons:hover {
+    cursor: pointer;
+    border-color: black;
+    border-radius: 5px black;
+}
+#prompt {
+    font-family: "Barlow", sans-serif;
+    font-weight: 50%;
+    margin-bottom: 10px;
+}
+#logo{
+    margin-bottom: 20px;
+    font-size: 60px;
+    font-family: "Oswald", sans-serif;
+    // font-family: "Barlow", sans-serif;
+    // font-family: "Poppins", sans-serif;
+    // font-family: "Exo 2", sans-serif;
+}

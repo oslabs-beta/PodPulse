@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import * as styles from './SelectNamespaceDashboard.module.scss';
@@ -13,9 +13,15 @@ export default function SelectNamespaceDashboard() {
   const [NamespaceArray, SetNamespaceArray] = useState([]);
   const [NamespaceFormText, SetNamespaceFormText] = useState('');
 
-  function onChangeInputText() {
-    const namespaceFormText = document.getElementById('namespaceInput').value;
-    SetNamespaceFormText(namespaceFormText);
+  useEffect(() => {
+    fetch('/getNamespaceList') //need new endpoint
+      .then((response) => response.json())
+      .then((newNamespaceArray) => SetNamespaceArray(newNamespaceArray))
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
+
+  function onChangeInputText(e) {
+    SetNamespaceFormText(e.target.value);
   }
 
   //when adding a namespace, check:

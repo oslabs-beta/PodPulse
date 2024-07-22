@@ -1,7 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import * as styles from './SelectPodDashboard.module.scss';
+
 export default function SelectPodDashboard() {
+  const location = useLocation();
+  const { namespace } = location.state || {};
+  console.log('namespace', namespace);
+  ///attempting to view namespace console.log
   const navigate = useNavigate();
   const goToPod = () => {
     navigate('/pod-dashboard');

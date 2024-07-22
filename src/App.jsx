@@ -8,6 +8,7 @@ import PodDashboard from './Components/PodDashboard/PodDashboard';
 import LoginPage from './Components/LoginPage/LoginPage';
 import CreateUser from './Components/CreateUser/CreateUser';
 import SelectNamespaceDashboard from './Components/SelectNamespaceDashboard/SelectNamespaceDashboard';
+import SelectPodDashboard from './Components/SelectPodDashboard/SelectPodDashboard';
 // import { useEffect } from 'react';
 // import { prettyPrintJson } from 'pretty-print-json';
 export default function App() {
@@ -26,6 +27,10 @@ export default function App() {
               element={<SelectNamespaceDashboard />}
             />
             {/*The index attribute indicates this component should render in the root path*/}
+            <Route
+              path='/select-pod-dashboard'
+              element={<SelectPodDashboard />}
+            />
             <Route path='/pod-dashboard' element={<PodDashboard />} />
           </Route>
         </Routes>

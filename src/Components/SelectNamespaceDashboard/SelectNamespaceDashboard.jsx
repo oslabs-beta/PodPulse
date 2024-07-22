@@ -14,7 +14,7 @@ export default function SelectNamespaceDashboard() {
   const [NamespaceFormText, SetNamespaceFormText] = useState('');
 
   useEffect(() => {
-    fetch('/getNamespaceList') //need new endpoint
+    fetch('/getNamespaceList')
       .then((response) => response.json())
       .then((newNamespaceArray) => SetNamespaceArray(newNamespaceArray))
       .catch((error) => console.error('Error fetching data:', error));
@@ -28,25 +28,17 @@ export default function SelectNamespaceDashboard() {
   //  is it in the array already?
   //  does it exists in the user's cluster?
   //  then add it to array and send the whole thing back to the db for storage in the user_table
-  function onSubmitNamespace() {
+  async function onSubmitNamespace() {
     const namespaceFormText = document.getElementById('namespaceInput').value;
     if (NamespaceArray.includes(namespaceFormText)) {
       alert('Namespace already being displayed');
     } else {
-      // fetch('/', {
-      //   header: {
-      //     Accept: 'application/json',
-      //     'content-Type': 'application/json',
-      //   },
-      //   method: 'POST',
-      //   body: JSON.stringify({
-      //     nameSpace: namespaceForm,
-      //   }),
-      // })then((response) => {
-      // })
-      const newNamespaceArray = NamespaceArray;
-      newNamespaceArray.push(namespaceFormText);
-      SetNamespaceArray(newNamespaceArray);
+      await fetch(`/initializeNamespace/${namespaceFormText}`);
+
+      const getNamespaceList = await fetch(`/getNamespaceList`);
+      const response = await getNamespaceList.json();
+      console.log('namespace list after submission = ', response);
+      SetNamespaceArray(response);
       SetNamespaceFormText('');
     }
   }

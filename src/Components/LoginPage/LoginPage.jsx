@@ -1,10 +1,28 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as styles from './LoginPage.scss';
+import Cookies from 'js-cookie';
+import { useEffect } from 'react';
 
 export default function loginPage () {
-    
     const navigate = useNavigate();
+    useEffect(() => {
+        console.log('using effect')
+        fetch('/auth', {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'GET'
+        })
+        .then((data) => data.json())
+        .then((data) => {
+            if(data.login === true){
+                navigate('/Nodes')
+            }
+        })
+    }, [])
+    
     const signup = () => {
         navigate("/CreateUser");
     }
@@ -15,7 +33,7 @@ export default function loginPage () {
         const newUsername = document.getElementById('Userinput').value;
         const newPassword = document.getElementById('PWinput').value;
         try{
-        const authCheck = await fetch('/login', {
+        const authCheck = await fetch('/', {
             headers: {
               Accept: 'application/json',
               'Content-Type': 'application/json',
@@ -25,16 +43,18 @@ export default function loginPage () {
               userName: newUsername,
               password: newPassword,
               }),
-        });
-
+        })
+        
         const response = await authCheck.json();
+       
+        // Cookies.set('secretCookie', JSON.stringify(response))
         console.log(response)
         if(response.status === 'success') {
             navigate('/Nodes')
         }
         }
         catch (err) {
-            console.log('error in loginauth')
+            console.log('error in loginauth', err)
         }
     }
     return (

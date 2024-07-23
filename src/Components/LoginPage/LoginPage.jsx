@@ -1,9 +1,26 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as styles from './LoginPage.scss';
+import { useEffect } from 'react';
 
 export default function loginPage() {
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log('using effect');
+    fetch('/auth', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        if (data.login === true) {
+          navigate('/Namespaces');
+        }
+      });
+  }, []);
   const signup = () => {
     navigate('/CreateUser');
   };

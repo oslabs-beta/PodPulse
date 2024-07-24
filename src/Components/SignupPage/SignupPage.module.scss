@@ -5,52 +5,26 @@
   align-items: center;
   flex-grow: 1;
 }
-.logo {
+.h2 {
   margin-bottom: 20px;
-  font-size: 60px;
-  font-family: 'Poppins', sans-serif;
 }
-.createBox {
+.signupBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  padding: 15px 5px;
-  background-color: white;
-  flex-wrap: wrap;
-  align-content: center;
   align-items: center;
-  box-shadow: 5px 10px 5px gray;
+  border: var(--card-border);
+  background-color: var(--tertiary-bg);
+  box-shadow: var(--card-box-shadow);
   border-radius: 5px;
+  min-width: 400px;
+  padding: 50px;
 }
-#Userinputs {
-  max-width: 220px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-bottom: 10px;
-  border-color: black;
-}
-#PWinputs {
-  max-width: 220px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-bottom: 10px;
-  border-color: black;
-}
-#buttons {
-  border-color: black;
-  margin-top: 5px;
-  max-width: 80px;
-  border-radius: 3px black;
-}
-#buttons:hover {
-  cursor: pointer;
-  border-color: black;
-  border-radius: 5px black;
-}
-#prompt {
+.prompt {
   font-family: 'Barlow', sans-serif;
   font-weight: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
-
+.pwInput {
+  margin-bottom: 20px;
+}

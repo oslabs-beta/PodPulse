@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as styles from './CreateUser.scss';
+import * as styles from './SignupPage.module.scss';
 
 export default function SignUp() {
   const navigate = useNavigate();
 
   const createUser = async () => {
     console.log('sign up button clicked');
-    const newUsername = document.getElementById('Userinputs').value;
-    const newPassword = document.getElementById('PWinputs').value;
+    const newUsername = document.getElementById('userInput').value;
+    const newPassword = document.getElementById('pwInput').value;
     console.log('user', newUsername, 'pass', newPassword);
     try {
       const authCheck = await fetch('/createUser', {
@@ -33,12 +33,11 @@ export default function SignUp() {
     }
   };
   return (
-    <div className='mainlogin'>
-      <p id='logo'>Pod Pulse</p>
+    <div className={styles.mainSignup}>
       <div className='createBox'>
         <p id='prompt'>Create your account and login.</p>
-        <input id='Userinputs' type='text' placeholder='UserName' />
-        <input id='PWinputs' type='text' placeholder='PassWord' />
+        <input id='userInput' type='text' placeholder='UserName' />
+        <input id='pwInput' type='text' placeholder='PassWord' />
         <button id='buttons' onClick={createUser}>
           Sign Up
         </button>

@@ -19,11 +19,12 @@ export default function PodCard(props) {
       <h2 className='barlow ml medium'>
         <span className={styles.listItem}>{props.pod.POD_NAME}</span>
       </h2>
-          <ul className='barlow xs regular'>
-            <li>
-              <span className={styles.listItem}># of Containers:</span> {props.pod.CONTAINERS.length}
-            </li>
-          </ul>
+      <ul className='barlow xs regular'>
+        <li>
+          <span className={styles.listItem}>Containers:</span>{' '}
+          {props.pod.CONTAINERS.length}
+        </li>
+      </ul>
     </div>
   );
 }

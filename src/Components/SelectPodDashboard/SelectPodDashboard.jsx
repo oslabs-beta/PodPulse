@@ -1,154 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as styles from './SelectPodDashboard.module.scss';
+import PodCard from './PodCard';
+import { nanoid } from 'nanoid';
 
 export default function SelectPodDashboard() {
   const location = useLocation();
   const { namespace } = location.state || {};
+  const [namespaceState, setNamespaceState] = useState({ PODS: [] });
+
   console.log('namespace', namespace);
   ///attempting to view namespace console.log
-  const navigate = useNavigate();
-  const goToPod = () => {
-    navigate('/pod-dashboard');
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`/getNamespaceState/${namespace}/`);
+      const data = await response.json();
+      console.log('namespace object data from fetch:', data);
+      setNamespaceState(data);
+    } catch (error) {
+      console.log('Error when fetching namespaceState:', error);
+    }
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log('state = ', namespaceState);
+  const podCards = namespaceState.PODS.map((pod) => {
+    return <PodCard key={nanoid()} pod={pod} />;
+  });
+
   return (
     <main className={styles.main}>
-      <div className={styles.nodeContainer}>
+      <div className={styles.namespace}>
         <h1 className={`${styles.h1} poppins lg regular`}>
-          <span className={styles.listItem}>Node Name:</span>node-1
+          <span className={styles.listItem}>Namespace Name:</span>default
         </h1>
         <div className={`${styles.podCardsContainer} barlow m regular`}>
-          <div className={styles.podCard} onClick={goToPod}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>react-front-end
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>3
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Monday,
-                Jan 08 2024 @ 08:24:03am
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>Pablo
-                Rosillo
-              </li>
-            </ul>
-          </div>
-          <div className={styles.podCard}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>express-server
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>2
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Today, Jan
-                10 2024 @ 02:05:49pm
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>--
-              </li>
-            </ul>
-          </div>
-          <div className={styles.podCard}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>mongodb-database
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>1
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Monday,
-                Jan 08 2024 @ 11:45:01am
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>--
-              </li>
-            </ul>
-          </div>
-          <div className={styles.podCard}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>cache-server
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>1
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Sunday,
-                Jan 07 2024 @ 01:22:02am
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>Ashe
-                McAtee
-              </li>
-            </ul>
-          </div>
+          {podCards}
         </div>
       </div>
-      <div className={styles.nodeContainer}>
-        <h1 className={`${styles.h1} poppins lg regular`}>
-          <span className={styles.listItem}>Node Name:</span>node-2
-        </h1>
-        <div className={`${styles.podCardsContainer} barlow m regular`}>
-          <div className={styles.podCard}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>nodejs-app
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>3
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Yesterday,
-                Jan 09 2024 @ 02:47:10am
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>--
-              </li>
-            </ul>
-          </div>
-          <div className={styles.podCard}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>mongodb-database
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>1
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Yesterday,
-                Jan 09 2024 @ 04:44:10pm
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>
-                Jeremy Kay
-              </li>
-            </ul>
-          </div>
-          <div className={styles.podCard}>
-            <h2 className='barlow ml medium'>
-              <span className={styles.listItem}>Pod:</span>mongo-express
-            </h2>
-            <ul className='barlow xs regular'>
-              <li>
-                <span className={styles.listItem}>Containers:</span>1
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restart:</span>Today, Jan
-                10 2024 @ 06:39:58pm
-              </li>
-              <li>
-                <span className={styles.listItem}>Last Restarted by:</span>--
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+
       <div className={styles.addNode}>
         <button className='btn-1'>+ Add Node</button>
       </div>

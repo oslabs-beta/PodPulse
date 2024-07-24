@@ -4,15 +4,14 @@ import 'normalize.css';
 import './App.scss';
 import Layout from './Components/Layout/Layout';
 // import NodesDashboard from './Components/NodesDashboard/NodesDashboard';
-import PodDashboard from './Components/PodDashboard/PodDashboard';
+import PodContentsDashboard from './Components/PodContentsDashboard/PodContentsDashboard';
 import LoginPage from './Components/LoginPage/LoginPage';
-import CreateUser from './Components/CreateUser/CreateUser';
+import SignupPage from './Components/SignupPage/SignupPage';
 import SelectNamespaceDashboard from './Components/SelectNamespaceDashboard/SelectNamespaceDashboard';
 import SelectPodDashboard from './Components/SelectPodDashboard/SelectPodDashboard';
 // import { useEffect } from 'react';
 // import { prettyPrintJson } from 'pretty-print-json';
 export default function App() {
-
   return (
     <div className='app'>
       <Router>
@@ -20,7 +19,7 @@ export default function App() {
           {/* Layout component includes the Header and Footer components which will wrap every page  */}
           <Route path='/' element={<Layout />}>
             <Route index element={<LoginPage />} />
-            <Route path='/CreateUser' index element={<CreateUser />} />
+            <Route path='/CreateUser' index element={<SignupPage />} />
             {/* <Route path='/Nodes' index element={<NodesDashboard />} /> */}
             <Route
               path='/Namespaces'
@@ -32,7 +31,10 @@ export default function App() {
               path='/select-pod-dashboard'
               element={<SelectPodDashboard />}
             />
-            <Route path='/pod-dashboard' element={<PodDashboard />} />
+            <Route
+              path='/pod-contents-dashboard'
+              element={<PodContentsDashboard />}
+            />
           </Route>
         </Routes>
       </Router>

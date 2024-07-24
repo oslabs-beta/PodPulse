@@ -7,27 +7,21 @@ import { nanoid } from 'nanoid';
 export default function SelectPodDashboard() {
   const location = useLocation();
   const { namespace } = location.state || {};
-
   const [namespaceState, setNamespaceState] = useState({ PODS: [] });
 
   console.log('namespace', namespace);
   ///attempting to view namespace console.log
-  const navigate = useNavigate();
-  const goToPod = () => {
-    navigate('/pod-dashboard');
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`/getNamespaceState/${namespace}/`);
+      const data = await response.json();
+      console.log('namespace object data from fetch:', data);
+      setNamespaceState(data);
+    } catch (error) {
+      console.log('Error when fetching namespaceState:', error);
+    }
   };
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`/getNamespaceState/${namespace}/`);
-        const data = await response.json();
-        console.log('namespace object data from fetch:', data);
-        setNamespaceState(data);
-      } catch (error) {
-        console.log('Error when fetching namespaceState:', error);
-      }
-    };
     fetchData();
   }, []);
 

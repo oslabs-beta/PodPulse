@@ -17,9 +17,9 @@ export default function loginPage() {
     })
       .then((data) => data.json())
       .then((data) => {
-        if (data.login === true) {
+        if (data.login === true ) {
           navigate('/Namespaces');
-        }
+        }  else {navigate('/')}
       });
   }, []);
   
@@ -49,6 +49,8 @@ export default function loginPage() {
       console.log(response);
       if (response.status === 'success') {
         navigate('/Namespaces');
+      } else {alert('incorrect username or password');
+        // navigate('/createUser')
       }
     } catch (err) {
       console.log('error in loginauth');

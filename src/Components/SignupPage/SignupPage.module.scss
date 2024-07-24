@@ -1,12 +1,14 @@
-.mainlogin {
+.mainSignup {
   display: flex;
-  text-align: center;
-  padding: 120px 200px;
   flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: stretch;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  flex-grow: 1;
+}
+.logo {
+  margin-bottom: 20px;
+  font-size: 60px;
+  font-family: 'Poppins', sans-serif;
 }
 .createBox {
   display: flex;
@@ -51,11 +53,4 @@
   font-weight: 50%;
   margin-bottom: 10px;
 }
-#logo {
-  margin-bottom: 20px;
-  font-size: 60px;
-  font-family: 'Oswald', sans-serif;
-  // font-family: "Barlow", sans-serif;
-  // font-family: "Poppins", sans-serif;
-  // font-family: "Exo 2", sans-serif;
-}
+

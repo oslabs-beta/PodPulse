@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as styles from './LoginPage.scss';
-import { useEffect } from 'react';
+import * as styles from './LoginPage.module.scss';
+
 
 export default function loginPage() {
   const navigate = useNavigate();
+
   useEffect(() => {
     console.log('using effect');
     fetch('/auth', {
@@ -21,15 +22,16 @@ export default function loginPage() {
         }  else {navigate('/')}
       });
   }, []);
+  
   const signup = () => {
     navigate('/CreateUser');
   };
 
   const loginAuth = async (event) => {
     event.preventDefault();
-    console.log('login button clicked');
-    const newUsername = document.getElementById('Userinput').value;
-    const newPassword = document.getElementById('PWinput').value;
+    const newUsername = document.getElementById('userInput').value;
+    const newPassword = document.getElementById('pwInput').value;
+    
     try {
       const authCheck = await fetch('/login', {
         headers: {
@@ -54,17 +56,20 @@ export default function loginPage() {
       console.log('error in loginauth');
     }
   };
+
   return (
-    <div className='mainlogin'>
-      <p id='logo'>Pod Pulse</p>
-      <div className='loginBox'>
-        <p id='prompt'>Input your login credentials or make a new account.</p>
-        <input id='Userinput' type='text' placeholder='UserName' />
-        <input id='PWinput' type='text' placeholder='PassWord' />
-        <button id='buttons' onClick={loginAuth}>
+    <div className={styles.mainLogin}>
+      <h2 className={styles.logo}>Log in to PodPulse</h2>
+      <div className={styles.loginBox}>
+        <p className={`${styles.prompt} barlow m regular`}>
+          Input your login credentials or make a new account.
+        </p>
+        <input id='userInput' className='input' type='text' placeholder='Username' />
+        <input id='pwInput' className={`${styles.pwInput} input`} type='text' placeholder='Password' />
+        <button className={`${styles.loginBtn} btn-1`} onClick={loginAuth}>
           Log In
         </button>
-        <button id='buttons' onClick={signup}>
+        <button className='btn-2' onClick={signup}>
           Sign Up
         </button>
       </div>

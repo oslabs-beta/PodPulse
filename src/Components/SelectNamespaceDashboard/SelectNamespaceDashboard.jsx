@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import * as styles from './SelectNamespaceDashboard.module.scss';
+import WebSocket from 'ws';
 
 import NamespaceCard from './NamespaceCard';
 

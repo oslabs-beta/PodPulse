@@ -32,7 +32,7 @@ export default function SignUp() {
     }
   };
   return (
-    <div className={styles.mainSignup}>
+    <main className={styles.mainSignup}>
       <h2 className={styles.h2}>Create a PodPulse account</h2>
       <div className={styles.signupBox}>
         <p className={`${styles.prompt} barlow m regular`}>
@@ -54,6 +54,6 @@ export default function SignUp() {
           Sign Up
         </button>
       </div>
-    </div>
+    </main>
   );
 }

@@ -65,7 +65,7 @@ export default function loginPage() {
   };
 
   return (
-    <div className={styles.mainLogin}>
+    <main className={styles.mainLogin}>
       <h2 className={styles.h2}>Log in to PodPulse</h2>
       <div className={styles.loginBox}>
         <p className={`${styles.prompt} barlow m regular`}>
@@ -95,6 +95,6 @@ export default function loginPage() {
           Sign Up
         </button>
       </div>
-    </div>
+    </main>
   );
 }

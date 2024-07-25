@@ -23,8 +23,8 @@ export default function SelectPodDashboard() {
     }
   };
   useEffect(() => {
-    if(shouldRun.current){
-    fetchData();
+    if (shouldRun.current) {
+      fetchData();
     }
     shouldRun.current = false;
   }, []);

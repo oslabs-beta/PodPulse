@@ -29,7 +29,7 @@ module.exports = {
                 localIdentName: '[name]__[local]__[hash:base64:5]', // More readable class names
               },
               sourceMap: true,
-            }
+            },
           },
           'sass-loader',
         ],
@@ -49,9 +49,12 @@ module.exports = {
       },
       {
         test: /\.(svg|png|jpe?g|gif)$/i,
-        type: 'asset/resource',
         use: {
           loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'imgs',
+          },
         },
       },
     ],

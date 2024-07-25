@@ -6,10 +6,9 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const createUser = async () => {
-    console.log('sign up button clicked');
     const newUsername = document.getElementById('userInput').value;
     const newPassword = document.getElementById('pwInput').value;
-    console.log('user', newUsername, 'pass', newPassword);
+
     try {
       const authCheck = await fetch('/createUser', {
         headers: {
@@ -34,11 +33,24 @@ export default function SignUp() {
   };
   return (
     <div className={styles.mainSignup}>
-      <div className='createBox'>
-        <p id='prompt'>Create your account and login.</p>
-        <input id='userInput' type='text' placeholder='UserName' />
-        <input id='pwInput' type='text' placeholder='PassWord' />
-        <button id='buttons' onClick={createUser}>
+      <h2 className={styles.h2}>Create a PodPulse account</h2>
+      <div className={styles.signupBox}>
+        <p className={`${styles.prompt} barlow m regular`}>
+          Input a username and a password.
+        </p>
+        <input
+          id='userInput'
+          className='input'
+          type='text'
+          placeholder='Username'
+        />
+        <input
+          id='pwInput'
+          className={`${styles.pwInput} input`}
+          type='password'
+          placeholder='Password'
+        />
+        <button className={'btn-1'} id='buttons' onClick={createUser}>
           Sign Up
         </button>
       </div>

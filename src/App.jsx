@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import 'normalize.css';
 import './App.scss';
 import Layout from './Components/Layout/Layout';
 // import NodesDashboard from './Components/NodesDashboard/NodesDashboard';
-import PodDashboard from './Components/PodDashboard/PodDashboard';
+
+import PodContentsDashboard from './Components/PodContentsDashboard/PodContentsDashboard';
 import LoginPage from './Components/LoginPage/LoginPage';
 import SignupPage from './Components/SignupPage/SignupPage';
 import SelectNamespaceDashboard from './Components/SelectNamespaceDashboard/SelectNamespaceDashboard';
@@ -12,6 +13,7 @@ import SelectPodDashboard from './Components/SelectPodDashboard/SelectPodDashboa
 // import { useEffect } from 'react';
 // import { prettyPrintJson } from 'pretty-print-json';
 export default function App() {
+  
   return (
     <div className='app'>
       <Router>
@@ -31,7 +33,10 @@ export default function App() {
               path='/select-pod-dashboard'
               element={<SelectPodDashboard />}
             />
-            <Route path='/pod-dashboard' element={<PodDashboard />} />
+            <Route
+              path='/pod-contents-dashboard'
+              element={<PodContentsDashboard  />}
+            />
           </Route>
         </Routes>
       </Router>

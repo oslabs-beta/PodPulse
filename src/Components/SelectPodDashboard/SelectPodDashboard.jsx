@@ -12,9 +12,8 @@ export default function SelectPodDashboard() {
 
   console.log('namespace', namespace);
   ///attempting to view namespace console.log
-  const fetchData = useCallback(async (namespace) => {
+  const fetchData = async () => {
     try {
-      console.log('YO');
       const response = await fetch(`/getNamespaceState/${namespace}/`);
       const data = await response.json();
       console.log('namespace object data from fetch:', data);
@@ -22,8 +21,7 @@ export default function SelectPodDashboard() {
     } catch (error) {
       console.log('Error when fetching namespaceState:', error);
     }
-  },[]);
-
+  };
   useEffect(() => {
     if(shouldRun.current){
     fetchData();

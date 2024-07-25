@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import * as styles from './SelectNamespaceDashboard.module.scss';
@@ -7,6 +7,7 @@ import NamespaceCard from './NamespaceCard';
 
 export default function SelectNamespaceDashboard() {
   const navigate = useNavigate();
+  const shouldRun = useRef(true);
   const goToPod = () => {
     navigate('/pod-dashboard');
   };
@@ -14,11 +15,14 @@ export default function SelectNamespaceDashboard() {
   const [NamespaceFormText, SetNamespaceFormText] = useState('');
 
   useEffect(() => {
+    if(shouldRun.current){
     fetch('/getNamespaceList')
       .then((response) => response.json())
       .then((newNamespaceArray) => SetNamespaceArray(newNamespaceArray))
       .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+  }
+  shouldRun.current = false;
+}, []);
 
   function onChangeInputText(e) {
     SetNamespaceFormText(e.target.value);

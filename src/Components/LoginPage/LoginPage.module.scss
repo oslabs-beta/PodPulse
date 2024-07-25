@@ -6,7 +6,7 @@
   flex-grow: 1;
 }
 
-.logo {
+.h2 {
   margin-bottom: 20px;
 }
 
@@ -19,6 +19,7 @@
   background-color: var(--tertiary-bg);
   box-shadow: var(--card-box-shadow);
   border-radius: 5px;
+  min-width: 400px;
   padding: 50px;
 }
 
@@ -33,5 +34,18 @@
 }
 
 .loginBtn {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.btnSeparator {
+  border-bottom: 1px solid var(--black);
+  line-height: 0.1em;
+  text-align: center;
+  margin: 25px 0 !important;
+  width: 100%;
+}
+
+.separatorTxt {
+  background-color: var(--tertiary-bg);
+  padding: 0px 10px;
 }

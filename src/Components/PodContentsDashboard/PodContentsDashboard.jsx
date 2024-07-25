@@ -9,6 +9,20 @@ import { nanoid } from 'nanoid';
 export default function PodContentsDashboard() {
   const location = useLocation();
   const { pod } = location.state || {};
+  const [poda, setPod] = useState(pod);
+
+  const resetPods = async ()=>{
+    try {
+      document.getElementById('JAT-container').style.display = 'block';
+      const response = await fetch(`/getPod/${poda.DB_ID}/`);
+      const data = await response.json();
+      console.log('namespace object data from fetch:', data);
+      setPod(data[0]);
+      document.getElementById('JAT-container').style.display = 'none';
+    } catch (error) {
+      console.log('Error when fetching namespaceState:', error);
+    }
+  };
 
   // const [podDashboardData, setPodDashboardData] = useState([]);
 
@@ -31,7 +45,7 @@ export default function PodContentsDashboard() {
   // }
 
   // Mapping through the fetched containers object to create table rows dynamically
-  const rows = pod.CONTAINERS.map((container) => {
+  const rows = poda.CONTAINERS.map((container) => {
     return (
       <div className={styles.gridRow} key={nanoid()}>
         <div>{container.CONTAINER_NAME}</div>
@@ -57,7 +71,7 @@ export default function PodContentsDashboard() {
     <main className={styles.main}>
       <h1 className={`${styles.h1} poppins lg regular`}>
         <span className={styles.podFullName}>Pod Name:</span>
-        {pod.POD_NAME}
+        {poda.POD_NAME}
       </h1>
       <div className={`${styles.grid} barlow m regular`}>
         <div className={styles.gridHeader}>
@@ -71,7 +85,7 @@ export default function PodContentsDashboard() {
       </div>
 
       <div className={styles.addContainer}>
-        <button className='btn-1'>+ Add Container</button>
+        <button className='btn-1' onClick={resetPods}>Refresh</button>
       </div>
     </main>
   );

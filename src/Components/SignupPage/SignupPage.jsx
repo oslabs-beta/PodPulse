@@ -47,7 +47,7 @@ export default function SignUp() {
         <input
           id='pwInput'
           className={`${styles.pwInput} input`}
-          type='text'
+          type='password'
           placeholder='Password'
         />
         <button className={'btn-1'} id='buttons' onClick={createUser}>

@@ -80,7 +80,7 @@ export default function loginPage() {
         <input
           id='pwInput'
           className={`${styles.pwInput} input`}
-          type='text'
+          type='password'
           placeholder='Password'
         />
         <button className={`${styles.loginBtn} btn-1`} onClick={loginAuth}>

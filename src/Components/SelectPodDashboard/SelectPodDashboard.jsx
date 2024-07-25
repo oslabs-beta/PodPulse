@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as styles from './SelectPodDashboard.module.scss';
 import PodCard from './PodCard';
@@ -11,8 +11,9 @@ export default function SelectPodDashboard() {
 
   console.log('namespace', namespace);
   ///attempting to view namespace console.log
-  const fetchData = async () => {
+  const fetchData = useCallback(async (namespace) => {
     try {
+      console.log('YO');
       const response = await fetch(`/getNamespaceState/${namespace}/`);
       const data = await response.json();
       console.log('namespace object data from fetch:', data);
@@ -20,14 +21,15 @@ export default function SelectPodDashboard() {
     } catch (error) {
       console.log('Error when fetching namespaceState:', error);
     }
-  };
+  },[]);
+
   useEffect(() => {
-    fetchData();
+    fetchData(namespace);
   }, []);
 
   console.log('state = ', namespaceState);
   const podCards = namespaceState.PODS.map((pod) => {
-    return <PodCard key={nanoid()} pod={pod} />;
+    return <PodCard key={nanoid()} pod={pod} fetchData={fetchData}/>;
   });
 
   return (
@@ -39,10 +41,6 @@ export default function SelectPodDashboard() {
         <div className={`${styles.podCardsContainer} barlow m regular`}>
           {podCards}
         </div>
-      </div>
-
-      <div className={styles.addNode}>
-        <button className='btn-1'>+ Add Node</button>
       </div>
     </main>
   );

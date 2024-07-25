@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -48,12 +49,9 @@ module.exports = {
       },
       {
         test: /\.(svg|png|jpe?g|gif)$/i,
+        type: 'asset/resource',
         use: {
           loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'imgs',
-          },
         },
       },
     ],

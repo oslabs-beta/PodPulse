@@ -70,9 +70,6 @@ export default function PodContentsDashboard() {
         {rows}
       </div>
 
-      <div className={styles.addContainer}>
-        <button className='btn-1'>+ Add Container</button>
-      </div>
     </main>
   );
 }

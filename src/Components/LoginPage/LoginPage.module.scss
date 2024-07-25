@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: center;
   flex-grow: 1;
 }
 
@@ -15,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: var(--card-border);
+  border: 1px solid var(--card-border);
   background-color: var(--tertiary-bg);
   box-shadow: var(--card-box-shadow);
   border-radius: 5px;

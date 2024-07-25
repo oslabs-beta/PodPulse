@@ -4,9 +4,15 @@
   align-items: center;
   height: 60px;
   padding: 10px 5%;
+  border-bottom: 1px solid var(--card-border);
 }
 
-.navigation ul{
+.logo {
+  width: 150px;
+  margin: 10px 0;
+}
+
+.navigation ul {
   display: flex;
   align-items: center;
 }

@@ -25,16 +25,18 @@ export default function SelectPodDashboard() {
     }
   };
   useEffect(() => {
-    if(shouldRun.current){
-    fetchData();
+    if (shouldRun.current) {
+      fetchData();
     }
     shouldRun.current = false;
   }, []);
 
   console.log('state = ', namespaceState);
-  const podCards = namespaceState.PODS.map((pod) => {
-    return <PodCard key={nanoid()} pod={pod} />;
-  });
+  let podCards
+  if(namespaceState.PODS !== undefined)
+    {podCards = namespaceState.PODS.map((pod) => {
+    return <PodCard key={nanoid()} pod={pod} fetchData={fetchData}/>;
+  })};
 
   return (
     <main className={styles.main}>
@@ -45,10 +47,6 @@ export default function SelectPodDashboard() {
         <div className={`${styles.podCardsContainer} barlow m regular`}>
           {podCards}
         </div>
-      </div>
-
-      <div className={styles.addNode}>
-        <button className='btn-1'>+ Add Node</button>
       </div>
     </main>
   );

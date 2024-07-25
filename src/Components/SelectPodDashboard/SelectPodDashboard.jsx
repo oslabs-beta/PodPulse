@@ -30,9 +30,11 @@ export default function SelectPodDashboard() {
   }, []);
 
   console.log('state = ', namespaceState);
-  const podCards = namespaceState.PODS.map((pod) => {
+  let podCards
+  if(namespaceState.PODS !== undefined)
+    {podCards = namespaceState.PODS.map((pod) => {
     return <PodCard key={nanoid()} pod={pod} fetchData={fetchData}/>;
-  });
+  })};
 
   return (
     <main className={styles.main}>

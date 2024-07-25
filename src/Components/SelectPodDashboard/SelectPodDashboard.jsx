@@ -14,10 +14,12 @@ export default function SelectPodDashboard() {
   ///attempting to view namespace console.log
   const fetchData = async () => {
     try {
+      document.getElementById('JAT-container').style.display = 'block';
       const response = await fetch(`/getNamespaceState/${namespace}/`);
       const data = await response.json();
       console.log('namespace object data from fetch:', data);
       setNamespaceState(data);
+      document.getElementById('JAT-container').style.display = 'none';
     } catch (error) {
       console.log('Error when fetching namespaceState:', error);
     }

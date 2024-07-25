@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as styles from './SelectPodDashboard.module.scss';
 import PodCard from './PodCard';
@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 
 export default function SelectPodDashboard() {
   const location = useLocation();
+  const shouldRun = useRef(true);
   const { namespace } = location.state || {};
   const [namespaceState, setNamespaceState] = useState({ PODS: [] });
 
@@ -22,7 +23,10 @@ export default function SelectPodDashboard() {
     }
   };
   useEffect(() => {
+    if(shouldRun.current){
     fetchData();
+    }
+    shouldRun.current = false;
   }, []);
 
   console.log('state = ', namespaceState);

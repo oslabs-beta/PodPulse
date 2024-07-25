@@ -11,5 +11,22 @@ Clone frontend repo before starting backend: [https://github.com/oslabs-beta/Pod
 This app will only function with namespaces that exist
 # Documentation
 # Contribution Guidelines
+# Feature Guide
+| Feature                                                                               | Status    |
+|---------------------------------------------------------------------------------------|-----------|
+| Create Cloud-hosted Kubernetes Implementation                                         | 🙏🏻        |
+| Create an organization login that can share container info across user accounts       | 🙏🏻        |
+| Implement restart container button that pulls userName from cookie and logs it        | 🙏🏻        |
+| ClearLogs should clear logs from the front end                                        | ⏳         |
+| Pod Dashboard "container" # updates for multi-container pods                          | ⏳        |
+| Connects to Local Clusters                                                            | ✅        |
+| Pulls restart logs from client-node api                                               | ✅       |
+| Watches for changes to restart logs from api                                          | ✅        |
+| JWT and Cookies for secure session storage                                            | ✅        |
+
+
+- ✅ = Ready to use
+- ⏳ = In progress
+- 🙏🏻 = Looking for contributors
 ## Preferred Workflow
 Please fork to a new branch for specific features, and pull to the `dev` branch when the feature branch is running as intended.

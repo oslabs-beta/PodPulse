@@ -7,6 +7,12 @@ import Layout from './Components/Layout/Layout';
 import PodDashboard from './Components/PodDashboard/PodDashboard';
 import LoginPage from './Components/LoginPage/LoginPage';
 import CreateUser from './Components/CreateUser/CreateUser';
+<<<<<<< HEAD
+=======
+import { useState } from 'react';
+import Cookies from 'js-cookie';
+
+>>>>>>> d405b81b8701f69d5b276ae4d46c63d9825870d3
 import SelectNamespaceDashboard from './Components/SelectNamespaceDashboard/SelectNamespaceDashboard';
 import SelectPodDashboard from './Components/SelectPodDashboard/SelectPodDashboard';
 // import { useEffect } from 'react';

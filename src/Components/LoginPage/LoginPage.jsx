@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from './LoginPage.scss';
 import { useEffect } from 'react';
 
+<<<<<<< HEAD
 export default function loginPage() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -24,6 +25,30 @@ export default function loginPage() {
   const signup = () => {
     navigate('/CreateUser');
   };
+=======
+export default function loginPage () {
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.log('using effect')
+        fetch('/auth', {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'GET'
+        })
+        .then((data) => data.json())
+        .then((data) => {
+            if(data.login === true){
+                navigate('/Nodes')
+            }
+        })
+    }, [])
+    
+    const signup = () => {
+        navigate("/CreateUser");
+    }
+>>>>>>> d405b81b8701f69d5b276ae4d46c63d9825870d3
 
   const loginAuth = async (event) => {
     event.preventDefault();

@@ -1,53 +1,53 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import * as styles from './PodDashboard.module.scss';
+import { useLocation } from 'react-router-dom';
+import * as styles from './PodContentsDashboard.module.scss';
 import RestartTimes from '../RestartTimes/RestartTimes.jsx';
 import RestartedBy from '../RestartedBy/RestartedBy.jsx';
+import { nanoid } from 'nanoid';
 
-export default function PodDashboard() {
-  const [podDashboardData, setPodDashboardData] = useState([]);
+export default function PodContentsDashboard() {
+  const location = useLocation();
+  const { pod } = location.state || {};
 
-  useEffect(() => {
-    fetch('/getPods')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setPodDashboardData(data.pods[0].containers);
-      })
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+  // const [podDashboardData, setPodDashboardData] = useState([]);
 
-  function handleClearLogs(container_db_id) {
-    fetch(`/pods/:${container_db_id}`, { method: 'PUT' })
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.error('Error fetching data:', error));
-  }
+  // useEffect(() => {
+  //   fetch('/getPods')
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setPodDashboardData(data.pods[0].containers);
+  //     })
+  //     .catch((error) => console.error('Error fetching data:', error));
+  // }, []);
+
+  // function handleClearLogs(container_db_id) {
+  //   fetch(`/pods/:${container_db_id}`, { method: 'PUT' })
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data))
+  //     .catch((error) => console.error('Error fetching data:', error));
+  // }
 
   // Mapping through the fetched containers object to create table rows dynamically
-  const rows = podDashboardData.map((container) => {
+  const rows = pod.CONTAINERS.map((container) => {
     return (
-      <div className={styles.gridRow} key={container.container_db_id}>
-        <div>{container.container_name}</div>
+      <div className={styles.gridRow} key={nanoid()}>
+        <div>{container.CONTAINER_NAME}</div>
         <div>Restart Rate!</div>
         <div>
           <RestartTimes
-            log_time={container.restart_logs[0].log_time}
-            restartLogs={container.restart_logs}
-            key={container.restart_logs.restart_log_db_id}
+            log_time={container.RESTART_LOGS[0].LOG_TIME}
+            restartLogs={container.RESTART_LOGS}
+            key={nanoid()}
           />
         </div>
         <div>
-          <RestartedBy
-            restartLogs={container.restart_logs}
-            key={container.restart_logs.restart_log_db_id}
-          />
+          <RestartedBy restartLogs={container.RESTART_LOGS} key={nanoid()} />
         </div>
         <div>
-          <button onClick={() => handleClearLogs(container.container_db_id)}>
-            Clear Logs
-          </button>
+          <button onClick={() => console.log('poof')}>Clear Logs</button>
         </div>
       </div>
     );
@@ -55,12 +55,10 @@ export default function PodDashboard() {
 
   return (
     <main className={styles.main}>
-      <h1 className={`${styles.h1} poppins lg regular`}>react-front-end</h1>
-      <p className='poppins xxs regular'>
-        <span className={styles.podFullName}>Full Name:</span>
-        react-front-end-6d4bd87b9-78p2k
-      </p>
-
+      <h1 className={`${styles.h1} poppins lg regular`}>
+        <span className={styles.podFullName}>Pod Name:</span>
+        {pod.POD_NAME}
+      </h1>
       <div className={`${styles.grid} barlow m regular`}>
         <div className={styles.gridHeader}>
           <div>Container</div>

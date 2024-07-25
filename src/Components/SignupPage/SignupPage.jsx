@@ -1,15 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as styles from './CreateUser.scss';
+import * as styles from './SignupPage.module.scss';
 
 export default function SignUp() {
   const navigate = useNavigate();
 
   const createUser = async () => {
-    console.log('sign up button clicked');
-    const newUsername = document.getElementById('Userinputs').value;
-    const newPassword = document.getElementById('PWinputs').value;
-    console.log('user', newUsername, 'pass', newPassword);
+    const newUsername = document.getElementById('userInput').value;
+    const newPassword = document.getElementById('pwInput').value;
+
     try {
       const authCheck = await fetch('/createUser', {
         headers: {
@@ -33,13 +32,25 @@ export default function SignUp() {
     }
   };
   return (
-    <div className='mainlogin'>
-      <p id='logo'>Pod Pulse</p>
-      <div className='createBox'>
-        <p id='prompt'>Create your account and login.</p>
-        <input id='Userinputs' type='text' placeholder='UserName' />
-        <input id='PWinputs' type='text' placeholder='PassWord' />
-        <button id='buttons' onClick={createUser}>
+    <div className={styles.mainSignup}>
+      <h2 className={styles.h2}>Create a PodPulse account</h2>
+      <div className={styles.signupBox}>
+        <p className={`${styles.prompt} barlow m regular`}>
+          Input a username and a password.
+        </p>
+        <input
+          id='userInput'
+          className='input'
+          type='text'
+          placeholder='Username'
+        />
+        <input
+          id='pwInput'
+          className={`${styles.pwInput} input`}
+          type='text'
+          placeholder='Password'
+        />
+        <button className={'btn-1'} id='buttons' onClick={createUser}>
           Sign Up
         </button>
       </div>

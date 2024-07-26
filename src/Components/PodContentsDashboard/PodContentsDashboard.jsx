@@ -17,6 +17,7 @@ export default function PodContentsDashboard() {
       const response = await fetch(`/getPod/${poda.DB_ID}/`);
       const data = await response.json();
       console.log('namespace object data from fetch:', data);
+      location.state.pod = data[0];
       setPod(data[0]);
       document.getElementById('JAT-container').style.display = 'none';
     } catch (error) {

@@ -17,10 +17,11 @@ This app will only function with namespaces that exist
 | Create Cloud-hosted Kubernetes Implementation                                         | 🙏🏻        |
 | Create an organization login that can share container info across user accounts       | 🙏🏻        |
 | Implement restart container button that pulls userName from cookie and logs it        | 🙏🏻        |
+| Create configuration for non-Oracle db connections                                    | 🙏🏻        |
 | ClearLogs should clear logs from the front end                                        | ⏳         |
-| Pod Dashboard "container" # updates for multi-container pods                          | ⏳        |
+| Pod Dashboard "container" # updates for multi-container pods                          | ⏳         |
 | Connects to Local Clusters                                                            | ✅        |
-| Pulls restart logs from client-node api                                               | ✅       |
+| Pulls restart logs from client-node api                                               | ✅        |
 | Watches for changes to restart logs from api                                          | ✅        |
 | JWT and Cookies for secure session storage                                            | ✅        |
 

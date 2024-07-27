@@ -5,13 +5,15 @@ import * as styles from './SelectNamespaceDashboard.module.scss';
 import WebSocket from 'ws';
 
 import NamespaceCard from './NamespaceCard';
+import { createListenerMiddleware } from '@reduxjs/toolkit';
 
 export default function SelectNamespaceDashboard() {
   const navigate = useNavigate();
   const shouldRun = useRef(true);
-  const goToPod = () => {
-    navigate('/pod-dashboard');
-  };
+  // const goToPod = () => {
+  //   navigate('/pod-dashboard'), 
+  //   {state:{namespaceValue: namespaceFormText}}
+  // };
   const [NamespaceArray, SetNamespaceArray] = useState([]);
   const [NamespaceFormText, SetNamespaceFormText] = useState('');
 
@@ -55,6 +57,7 @@ export default function SelectNamespaceDashboard() {
     }
   }
   const namespaceCards = NamespaceArray.map((namespace) => {
+    console.log('MAPPING: ', namespace);
     return <NamespaceCard key={nanoid()} namespace={namespace} />;
   });
 

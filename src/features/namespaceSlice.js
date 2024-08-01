@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
-
 const getNamespaceState = async (namespace = 'default') => {
   try {
     document.getElementById('JAT-container').style.display = 'block';
@@ -48,6 +46,10 @@ export const namespaceSlice = createSlice({
       console.log('SETTING CURRENT NAMESPACE: ', action.payload);
       state.currentNamespace = action.payload;
     },
+    setStatus: (state, action) => {
+      console.log('SETTING CURRENT STATUS: ', action.payload);
+      state.status = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -67,6 +69,6 @@ export const namespaceSlice = createSlice({
   },
 });
 
-export const { checkState, setCurrentNamespace } = namespaceSlice.actions;
+export const { checkState, setCurrentNamespace, setStatus } = namespaceSlice.actions;
 
 export default namespaceSlice.reducer;

@@ -4,10 +4,12 @@ import * as styles from './SelectPodDashboard.module.scss';
 
 export default function PodCard(props) {
   const navigate = useNavigate();
+  // const fetchData = () => {props.fetchData}
   const goToPodDashboard = () => {
     console.log('in pod card', props);
     navigate(`/pod-contents-dashboard`, {
-      state: { pod: props.pod },
+      state: { podID: props.pod.DB_ID
+       },
     });
   };
 

@@ -1,14 +1,44 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as styles from './PodContentsDashboard.module.scss';
 import RestartTimes from '../RestartTimes/RestartTimes.jsx';
 import RestartedBy from '../RestartedBy/RestartedBy.jsx';
 import { nanoid } from 'nanoid';
+import { getNamespace } from '../../features/namespaceSlice.js';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function PodContentsDashboard() {
   const location = useLocation();
-  const { pod } = location.state || {};
+  const { podID } = location.state || {};
+  // const [poda, setPod] = useState(pod);
+  let status = useSelector(state=>state.namespace.status);
+  const podState = useSelector(state=>state.namespace.namespaceState.PODS);
+  let currentNamespace = useSelector(state=>state.namespace.currentNamespace);
+  const dispatch = useDispatch();
+  const shouldRun = useRef(true);
+  if(window.localStorage['currentNamespace'])currentNamespace = window.localStorage.getItem('currentNamespace');
+  if(!podState) status = 'idle';
+
+  useEffect(()=>{
+    // if(shouldRun.current){
+    if(status == 'idle')
+    {
+      console.log('DISPATCHING!!');
+      // dispatch(getNamespace('default'));
+      resetPods();
+    }
+    // }
+    // shouldRun.current = false;
+  }, [status]);
+
+  const resetPods =  ()=>{
+    try {
+      dispatch(getNamespace(currentNamespace));
+    } catch (error) {
+      console.log('Error when fetching namespaceState:', error);
+    }
+  };
 
   // const [podDashboardData, setPodDashboardData] = useState([]);
 
@@ -31,7 +61,16 @@ export default function PodContentsDashboard() {
   // }
 
   // Mapping through the fetched containers object to create table rows dynamically
-  const rows = pod.CONTAINERS.map((container) => {
+  let rows = '';
+
+  if(status == 'DONE'){
+    let pod = {};
+    podState.forEach(p=>{
+      if(p.DB_ID == podID)
+        pod = p;
+    });
+
+  rows = pod.CONTAINERS.map((container) => {
     return (
       <div className={styles.gridRow} key={nanoid()}>
         <div>{container.CONTAINER_NAME}</div>
@@ -52,12 +91,13 @@ export default function PodContentsDashboard() {
       </div>
     );
   });
+}
 
   return (
     <main className={styles.main}>
       <h1 className={`${styles.h1} poppins lg regular`}>
         <span className={styles.podFullName}>Pod Name:</span>
-        {pod.POD_NAME}
+        {/* {poda.POD_NAME} */}
       </h1>
       <div className={`${styles.grid} barlow m regular`}>
         <div className={styles.gridHeader}>
@@ -71,7 +111,7 @@ export default function PodContentsDashboard() {
       </div>
 
       <div className={styles.addContainer}>
-        <button className='btn-1'>+ Add Container</button>
+        <button className='btn-1' onClick={resetPods}>Refresh</button>
       </div>
     </main>
   );

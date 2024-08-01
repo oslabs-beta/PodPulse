@@ -32,7 +32,7 @@ export default function SignUp() {
     }
   };
   return (
-    <div className={styles.mainSignup}>
+    <main className={styles.mainSignup}>
       <h2 className={styles.h2}>Create a PodPulse account</h2>
       <div className={styles.signupBox}>
         <p className={`${styles.prompt} barlow m regular`}>
@@ -47,13 +47,13 @@ export default function SignUp() {
         <input
           id='pwInput'
           className={`${styles.pwInput} input`}
-          type='text'
+          type='password'
           placeholder='Password'
         />
         <button className={'btn-1'} id='buttons' onClick={createUser}>
           Sign Up
         </button>
       </div>
-    </div>
+    </main>
   );
 }

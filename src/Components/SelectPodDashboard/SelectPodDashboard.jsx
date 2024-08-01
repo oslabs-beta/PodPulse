@@ -12,7 +12,7 @@ export default function SelectPodDashboard() {
 
   console.log('namespace', namespace);
   ///attempting to view namespace console.log
-  const fetchData = async () => {
+  const fetchData = async (namespace) => {
     try {
       const response = await fetch(`/getNamespaceState/${namespace}/`);
       const data = await response.json();
@@ -29,7 +29,7 @@ export default function SelectPodDashboard() {
     shouldRun.current = false;
   }, []);
 
-  console.log('state = ', namespaceState);
+  console.log('state = ', namespaceState); Looping + 
   const podCards = namespaceState.PODS.map((pod) => {
     return <PodCard key={nanoid()} pod={pod} />;
   });

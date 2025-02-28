@@ -1,0 +1,52 @@
+.mainLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  flex-grow: 1;
+}
+
+.h2 {
+  margin-bottom: 20px;
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--card-border);
+  background-color: var(--tertiary-bg);
+  box-shadow: var(--card-box-shadow);
+  border-radius: 5px;
+  min-width: 400px;
+  padding: 50px;
+}
+
+.prompt {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 50%;
+  margin-bottom: 20px;
+}
+
+.pwInput {
+  margin-bottom: 20px;
+}
+
+.loginBtn {
+  margin-bottom: 30px;
+}
+
+.btnSeparator {
+  border-bottom: 1px solid var(--black);
+  line-height: 0.1em;
+  text-align: center;
+  margin: 25px 0 !important;
+  width: 100%;
+}
+
+.separatorTxt {
+  background-color: var(--tertiary-bg);
+  padding: 0px 10px;
+}

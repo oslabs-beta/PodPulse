@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import * as styles from './SelectNamespaceDashboard.module.scss';
+import WebSocket from 'ws';
 
 import NamespaceCard from './NamespaceCard';
 
 export default function SelectNamespaceDashboard() {
   const navigate = useNavigate();
+  const shouldRun = useRef(true);
   const goToPod = () => {
     navigate('/pod-dashboard');
   };
@@ -14,11 +16,19 @@ export default function SelectNamespaceDashboard() {
   const [NamespaceFormText, SetNamespaceFormText] = useState('');
 
   useEffect(() => {
+    if(shouldRun.current){
+      document.getElementById('JAT-container').style.display = 'block';
     fetch('/getNamespaceList')
       .then((response) => response.json())
-      .then((newNamespaceArray) => SetNamespaceArray(newNamespaceArray))
+      .then((newNamespaceArray) =>
+        { 
+          SetNamespaceArray(newNamespaceArray);
+          document.getElementById('JAT-container').style.display = 'none';
+        })
       .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+  }
+  shouldRun.current = false;
+}, []);
 
   function onChangeInputText(e) {
     SetNamespaceFormText(e.target.value);
@@ -33,12 +43,14 @@ export default function SelectNamespaceDashboard() {
     if (NamespaceArray.includes(namespaceFormText)) {
       alert('Namespace already being displayed');
     } else {
+      document.getElementById('JAT-container').style.display = 'block';
       await fetch(`/initializeNamespace/${namespaceFormText}`);
 
       const getNamespaceList = await fetch(`/getNamespaceList`);
       const response = await getNamespaceList.json();
       console.log('namespace list after submission = ', response);
       SetNamespaceArray(response);
+      document.getElementById('JAT-container').style.display = 'none';
       SetNamespaceFormText('');
     }
   }
@@ -52,7 +64,7 @@ export default function SelectNamespaceDashboard() {
         <h1 className={`${styles.h1} poppins lg regular`}>
           <span className={styles.listItem}>Namespaces</span>
         </h1>
-        <div className={`${styles.namespaceCardsContainer} barlow m regular`}>
+        <div className={`${styles.namespaceCardsContainer} barlow m regular`} id='namespaceReload'>
           {namespaceCards}
         </div>
       </div>

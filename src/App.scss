@@ -1,16 +1,17 @@
 :root {
-  --primary: #326CE5;
-  --secondary: #3C7DFF;
+  --primary: #326ce5;
+  --secondary: #3c7dff;
   --black: #030303;
-  --gray: #C8D1DE;
-  --white: #F9F9F9;
-  --primary-bg: #F8F8F9;
-  --secondary-bg: #F2F4F8;
-  --tertiary-bg: #E6EBF2;
+  --gray: #c8d1de;
+  --white: #f9f9f9;
+  --primary-bg: #f8f8f9;
+  --secondary-bg: #f2f4f8;
+  --tertiary-bg: #e6ebf2;
   --card-border: rgb(211, 211, 211);
-  --card-box-shadow: 0px 3px 20px -20px rgba(0,0,0,0.75);
-  --card-hover-box-shadow: 0px 3px 20px -13px rgba(50,108,229,1);
+  --card-box-shadow: 0px 3px 20px -20px rgba(0, 0, 0, 0.75);
+  --card-hover-box-shadow: 0px 3px 20px -13px rgba(50, 108, 229, 1);
 }
+
 /*FONT SIZES*/
 .xxs {
   font-size: 12px;
@@ -34,7 +35,7 @@
   font-size: 28px;
 }
 .xxl {
-  font-size: 40px
+  font-size: 40px;
 }
 /*FONT WEIGHTS*/
 .thin {
@@ -64,25 +65,20 @@
 .black {
   font-weight: 900;
 }
+
 /*FONTS*/
-.oswald {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
+
 .barlow {
-  font-family: "Barlow", sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-style: normal;
 }
 .poppins {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
 }
-.exo {
-  font-family: "Exo 2", sans-serif;
-  font-style: normal;
-}
+
 /*HTML ELEMENTS*/
+
 * {
   box-sizing: border-box;
 }
@@ -90,9 +86,23 @@ body {
   background-color: var(--secondary-bg);
   margin: 0;
 }
-h1, h2, h3, h4, h5, h6{
+main {
+  max-width: 1200px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   overflow-wrap: break-word;
+}
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
 }
 p {
   font-size: 16px;
@@ -116,17 +126,36 @@ a {
   border: none;
   border-radius: 5px;
   color: var(--primary-bg);
-  font-family: "Barlow", sans-serif;
+  font-family: 'Barlow', sans-serif;
   font-weight: 400;
   padding: 4px 20px 7px;
   &:hover {
     background-color: var(--secondary);
+    cursor: pointer;
   }
 }
-.app{
+.btn-2 {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  color: var(--black);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  padding: 4px 20px 7px;
+  &:hover {
+    color: var(--primary-bg);
+    background-color: var(--primary);
+    cursor: pointer;
+  }
+}
+.input {
+  font-family: 'Barlow', sans-serif;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+.app {
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
   margin: 0 auto;
   height: 100vh;
 }

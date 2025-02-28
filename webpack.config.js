@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -28,7 +29,7 @@ module.exports = {
                 localIdentName: '[name]__[local]__[hash:base64:5]', // More readable class names
               },
               sourceMap: true,
-            }
+            },
           },
           'sass-loader',
         ],

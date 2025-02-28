@@ -13,7 +13,6 @@ import SelectPodDashboard from './Components/SelectPodDashboard/SelectPodDashboa
 // import { useEffect } from 'react';
 // import { prettyPrintJson } from 'pretty-print-json';
 export default function App() {
-  
   return (
     <div className='app'>
       <Router>

@@ -5,6 +5,7 @@ import * as styles from './SelectNamespaceDashboard.module.scss';
 import WebSocket from 'ws';
 
 import NamespaceCard from './NamespaceCard';
+import BedrockAccessPanel from './BedrockAccessPanel';
 
 export default function SelectNamespaceDashboard() {
   const navigate = useNavigate();
@@ -16,19 +17,18 @@ export default function SelectNamespaceDashboard() {
   const [NamespaceFormText, SetNamespaceFormText] = useState('');
 
   useEffect(() => {
-    if(shouldRun.current){
+    if (shouldRun.current) {
       document.getElementById('JAT-container').style.display = 'block';
-    fetch('/getNamespaceList')
-      .then((response) => response.json())
-      .then((newNamespaceArray) =>
-        { 
+      fetch('/getNamespaceList')
+        .then((response) => response.json())
+        .then((newNamespaceArray) => {
           SetNamespaceArray(newNamespaceArray);
           document.getElementById('JAT-container').style.display = 'none';
         })
-      .catch((error) => console.error('Error fetching data:', error));
-  }
-  shouldRun.current = false;
-}, []);
+        .catch((error) => console.error('Error fetching data:', error));
+    }
+    shouldRun.current = false;
+  }, []);
 
   function onChangeInputText(e) {
     SetNamespaceFormText(e.target.value);
@@ -64,7 +64,10 @@ export default function SelectNamespaceDashboard() {
         <h1 className={`${styles.h1} poppins lg regular`}>
           <span className={styles.listItem}>Namespaces</span>
         </h1>
-        <div className={`${styles.namespaceCardsContainer} barlow m regular`} id='namespaceReload'>
+        <div
+          className={`${styles.namespaceCardsContainer} barlow m regular`}
+          id='namespaceReload'
+        >
           {namespaceCards}
         </div>
       </div>
@@ -78,6 +81,7 @@ export default function SelectNamespaceDashboard() {
         />
         <button onClick={onSubmitNamespace}>Add Namespace</button>
       </div>
+      <BedrockAccessPanel />
     </main>
   );
 }

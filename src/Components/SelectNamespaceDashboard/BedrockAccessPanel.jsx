@@ -4,7 +4,7 @@ import * as styles from './SelectNamespaceDashboard.module.scss';
 export default function BedrockAccessPanel(props) {
   return (
     <div
-      className={styles.namespaceCard} //temporarily matching namespaceCard
+      className={styles.bedrockAccessPanel} //temporarily matching namespaceCard
     >
       <h2 className='barlow ml medium'>
         <span className={styles.listItem}>Bedrock Access Panel</span>

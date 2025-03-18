@@ -6,6 +6,7 @@
   flex-grow: 1;
   text-align: center;
   padding: 30px 5%;
+  gap: 10px;
 }
 .namespacesContainer {
   margin-bottom: 50px;
@@ -38,6 +39,7 @@
     box-shadow: var(--card-hover-box-shadow);
   }
 }
+
 .listItem {
   font-weight: 500;
   margin-right: 10px;
@@ -51,4 +53,18 @@
   margin: 10px auto 0;
   padding: 20px;
   width: 100%;
+}
+
+.bedrockAccessPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--card-border);
+  background-color: var(--quaternary-bg);
+  box-shadow: var(--card-box-shadow);
+  border-radius: 5px;
+  min-width: 400px;
+  padding: 50px;
 }

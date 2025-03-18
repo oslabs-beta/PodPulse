@@ -29,7 +29,7 @@ export default function Header() {
             </li>
             <li>
               <button className='btn-2' onClick={logOutUser}>
-                LogOut
+                Sign Out
               </button>
             </li>
           </ul>
